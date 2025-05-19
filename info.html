@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Descubre la Informática Moderna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1400&q=80') no-repeat center/cover;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #00fff7;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00fff7;
+      width: 0;
+      animation: typing 4s steps(30, end) forwards, blink .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    header p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary {
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      background: #00fff7;
+      color: #022;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 0 15px #00fff7;
+      transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #00c6b8;
+      box-shadow: 0 0 25px #00c6b8;
+    }
+
+    main {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 70px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-shadow: 0 0 15px #00fff7;
+    }
+
+    .section-icon {
+      font-size: 4rem;
+      color: #00fff7;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .benefits-list,
+    .tech-list,
+    .specializations,
+    .future-list,
+    .scholarships,
+    .chart-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: #022f3f;
+      padding: 25px 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00fff7aa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px #00fff7ff;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin: 15px 0 10px;
+      font-weight: 700;
+      color: #00fff7;
+    }
+
+    .card p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #ddd;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00fff7aa;
+      margin-bottom: 15px;
+    }
+
+    canvas {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 600px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #011;
+      color: #00fff7;
+      border-top: 2px solid #00fff7;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-list,
+      .tech-list,
+      .specializations,
+      .future-list,
+      .scholarships,
+      .chart-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="mainTitle">Descubre la Informática Moderna</h1>
+    <p>Explora el fascinante mundo de la tecnología y la innovación.</p>
+    <button class="btn-primary" onclick="scrollToContent()">Comenzar</button>
+  </header>
+
+  <main id="content">
+
+    <!-- Secciones previas mantenidas intactas -->
+
+    <section>
+      <div class="section-title"><span class="section-icon ri-graduation-cap-line"></span><br>¿Por qué estudiar informática?</div>
+      <div class="benefits-list">
+        <div class="card">
+          <h3>Alta demanda laboral</h3>
+          <p>Profesionales altamente requeridos en todo el mundo.</p>
+        </div>
+        <div class="card">
+          <h3>Innovación constante</h3>
+          <p>Trabaja en lo último en tecnología y soluciones creativas.</p>
+        </div>
+        <div class="card">
+          <h3>Impacto global</h3>
+          <p>Cambia el mundo con tus ideas digitales.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="section-icon ri-rocket-line"></span><br>Tecnologías emergentes</div>
+      <div class="tech-list">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Código y gráficos">
+          <h3>Computación cuántica</h3>
+          <p>Soluciona problemas imposibles con qubits.</p>
+        </div>
+        <div class="card">
+          <img src="robot.jpeg" alt="Robot">
+          <h3>Robótica avanzada</h3>
+          <p>Automatización inteligente en industrias y hogares.</p>
+        </div>
+        <div class="card">
+          <img src="Blockchain.jpg" alt="Blockchain">
+          <h3>Blockchain</h3>
+          <p>Seguridad y descentralización para el futuro.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="section-icon ri-code-s-slash-line"></span><br>Especializaciones en informática</div>
+      <div class="specializations">
+        <div class="card">
+          <img src="Software.jpg" alt="Programación">
+          <h3>Desarrollo de Software</h3>
+          <p>Diseña y crea aplicaciones que impactan.</p>
+        </div>
+        <div class="card">
+          <img src="Inteligencia artificial.jpg" alt="IA">
+          <h3>Inteligencia Artificial</h3>
+          <p>Enseña a las máquinas a pensar.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Desarrollo Web">
+          <h3>Desarrollo Web</h3>
+          <p>Webs modernas para una era digital.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="section-icon ri-sparkling-line"></span><br>El futuro de la informática</div>
+      <div class="future-list">
+        <div class="card">
+          <h3>Realidad Aumentada</h3>
+          <p>Integra el mundo digital con el físico de manera inmersiva.</p>
+        </div>
+        <div class="card">
+          <h3>Metaverso</h3>
+          <p>Explora nuevas formas de interacción y economía digital.</p>
+        </div>
+        <div class="card">
+          <h3>Ciberseguridad Avanzada</h3>
+          <p>Protege los datos en un mundo hiperconectado.</p>
+        </div>
+      </div>
+    </section>
+
+    
+    <section>
+      <div class="section-title"><span class="section-icon ri-bank-line"></span><br>Universidades y Becas</div>
+      <div class="scholarships">
+        <div class="card">
+          <img src="universidad.jpg" alt="Universidad 1">
+          <h3>Universidad de Tecnología Global</h3>
+          <p>Ofrece becas completas para carreras informáticas.</p>
+        </div>
+        <div class="card">
+          <img src="International.jpg" alt="Universidad 2">
+          <h3>Academia de Software Avanzado</h3>
+          <p>Programas de intercambio y formación internacional.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="section-icon ri-bar-chart-line"></span><br>Demanda laboral por especialidad</div>
+      <div class="chart-container">
+        <canvas id="laborChart" width="600" height="400"></canvas>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Descubre la Informática Moderna. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function scrollToContent() {
+      document.getElementById("content").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Gráfico de demanda laboral
+    const ctx = document.getElementById('laborChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['IA', 'Ciberseguridad', 'Desarrollo Web', 'Datos', 'Robótica'],
+        datasets: [{
+          label: 'Empleos en miles (2025)',
+          data: [120, 95, 150, 80, 60],
+          backgroundColor: '#00fff7'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: '#000' }
+          },
+          x: {
+            ticks: { color: '#000' }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#000'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
